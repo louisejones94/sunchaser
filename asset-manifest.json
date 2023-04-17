@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/sunchaser/static/css/main.073c9b0a.css",
+    "main.js": "/sunchaser/static/js/main.253924fe.js",
+    "static/js/787.b1b06600.chunk.js": "/sunchaser/static/js/787.b1b06600.chunk.js",
+    "static/media/logo.svg": "/sunchaser/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/sunchaser/index.html",
+    "main.073c9b0a.css.map": "/sunchaser/static/css/main.073c9b0a.css.map",
+    "main.253924fe.js.map": "/sunchaser/static/js/main.253924fe.js.map",
+    "787.b1b06600.chunk.js.map": "/sunchaser/static/js/787.b1b06600.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.253924fe.js"
+  ]
+}
