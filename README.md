@@ -10,7 +10,7 @@ ___
 
 ## Deployment
 
-[Play now via Github Pages](https://louisejones94.github.io/noughts-and-crosses/)
+[Chase the sun now via Github Pages](https://louisejones94.github.io/sunchaser/)
 
 
 ___
