@@ -106,6 +106,14 @@ ___
 - API call
     - One for all the data
     - One for the person's location
+    - Return a list of sunny places
+    - Some kind of ordering
+- User shortlist
+    - Add to list
+    - Mark as visited
+    - Remove from list
+- It turns out it is just extremely hot in the Highlands today: https://www.independent.co.uk/news/uk/met-office-scottish-highlands-scotland-britons-northern-ireland-b2321262.html
+
 
 ### Day 3
 

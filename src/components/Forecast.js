@@ -1,9 +1,9 @@
-export default function Forecast({forecast}) {
+export default function Forecast({forecasts, placeID}) {
     return (
         <div>
-            <h2>{forecast.location}</h2>
-            <h3>{forecast.temperature}&deg;C</h3>
-            <h4>{forecast.description}</h4>
+            <h2>{forecasts.location}</h2>
+            <h3>{forecasts.temperature}&deg;C</h3>
+            <h4>{forecasts.description}</h4>
         </div>
     )
 }

@@ -1,16 +1,18 @@
 import { useState, useEffect } from "react";
-import Forecast from "../components/Forecast";
+// import Forecast from "../components/Forecast";
 import {sortByKey} from "../helpers/sort.js";
 import DropDown from "../components/DropDown";
 import DatePicker from "../components/DatePicker";
+import SunnyPlacesList from "../components/SunnyPlacesList";
 
 export default function Search() {
-    const [zipCode, setZipCode] = useState("");
-    const [forecast, setForecast] = useState(null);
+    const [forecasts, setForecasts] = useState(null);
     const [locationOptions, setLocationOptions] = useState(null);
     const [locationChoice, setLocationChoice] = useState("");
-    const [dateChoice, setDateChoice] = useState(new Date().toJSON().slice(0, 10))
+    const [dateChoice, setDateChoice] = useState(new Date().toJSON().slice(0, 10));
+    const [forecastParameters, setForecastParameters] = useState(null);
     
+
     function handleSelectChange(e) {
         e.preventDefault();
         let newUserLocation = e.target.value;
@@ -30,17 +32,9 @@ export default function Search() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        fetch(`http://api.openweathermap.org/data/2.5/weather?units=metric&zip=${zipCode},us&appid=052f26926ae9784c2d677ca7bc5dec98`)
-            .then((response) => response.json())
-            .then((results) => {
-                setForecast({
-                    location: results.name
-                    ,description: results.weather[0].description
-                    ,temperature: Math.round(results.main.temp)
-                }) 
+        // Get the forecast for the selected location
 
-            })
-            .catch((error) => console.log("Error! ", error))
+
     }
 
     // Function to get the list of locations to feed the dropdown options
@@ -53,39 +47,41 @@ export default function Search() {
                 // Alphabetical order
                 sortByKey(locations, "label");
                 setLocationOptions(locations);
-                console.log(locations);
             })
             .catch((error) => console.log("Error! ", error))
     // Only run one time        
     }, []);
 
-    // useEffect(function() {
-    //     fetch(`http://datapoint.metoffice.gov.uk/public/data/val/wxfcs/all/json/all?res=daily&key=b480fa2d-ce6d-41ba-aaed-aaa13d81ae62`)
-    //         .then((response) => response.json())
-    //         .then((results) => {
-    //             console.log('Got all the forecasts!')
-    //             // Organise the hot mess of the API response lol
-
-    //             // set in State the location, date, lat/long, forecast
-
-    //             // setForecast({
-    //             //     location: results.name
-    //             //     ,description: results.weather[0].description
-    //             //     ,temperature: Math.round(results.main.temp)
-    //             // }) 
-    //         })
-    //         .catch((error) => console.log("Error! ", error))
-    // }, []);
+    // Function to get the full list of weather forecasts for all locations in the UK
+    useEffect(function() {
+        fetch(`http://datapoint.metoffice.gov.uk/public/data/val/wxfcs/all/json/all?res=daily&key=b480fa2d-ce6d-41ba-aaed-aaa13d81ae62`)
+            .then((response) => response.json())
+            .then((results) => {
+                console.log('Got all the forecasts!')
+                // Split the API response into parameters and forecasts
+                let parameters = results.SiteRep.Wx.Param;
+                setForecastParameters(parameters);
+                let forecasts = results.SiteRep.DV.Location;
+                setForecasts(forecasts);
+            })
+            .catch((error) => console.log("Error! ", error))
+    }, []);
     
     return (
         <div>
-            <h1>Where are you?</h1>
+            <h1>Let's chase the sun!</h1>
+            <h2>First things first, let's see if there's sun where you are...</h2>
             <form onSubmit={handleSubmit}>
                 <DropDown locationOptions={locationOptions} locationChoice={locationChoice} handleSelectChange={handleSelectChange} />
                 <DatePicker dateChoice={dateChoice} handleDateChange={handleDateChange} />
-                <button type="submit">Get forecast</button>
-                {forecast && <Forecast forecast={forecast}/>}
+                <button type="submit">Is it sunny near me?</button>
             </form>
+            {/* Show a foreceast for the selection location */}
+            {/* {forecasts && <Forecast forecasts={forecasts} placeID={locationChoice}/>} */}
+            {/* If it's sunny, show a happy message. */}
+            {/* If it's not sunny, show the list of sunny places */}
+            
+            {forecasts && <SunnyPlacesList forecasts={forecasts} dateChoice={dateChoice} />}
         </div>
     )
 }

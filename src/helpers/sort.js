@@ -14,4 +14,14 @@ function sortByKey(array, key) {
     });
 }
 
-export {sortByKey}
+// Function to sort an array of objects by a given numerical key
+function sortByNumericalKey(array, key) {
+    array.sort((a, b) => {
+        let ak = Number(a.key),
+            bk = Number(b.key);
+
+        
+    })
+}
+
+export {sortByKey, sortByNumericalKey}
