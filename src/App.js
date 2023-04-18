@@ -1,8 +1,8 @@
-import './App.css';
-import Home from './Home';
-import Place from './Place';
-import NavBar from './NavBar';
-import PageNotFound from './PageNotFound';
+import './css/App.css';
+import Home from './routes/Home';
+import Place from './routes/Place';
+import NavBar from './components/NavBar';
+import PageNotFound from './routes/PageNotFound';
 import { Routes, Route } from "react-router-dom";
 
 function App() {

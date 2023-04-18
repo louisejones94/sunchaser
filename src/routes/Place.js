@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Forecast from "./Forecast";
+import Forecast from "../components/Forecast";
 
 export default function Place() {
     const [zipCode, setZipCode] = useState("");
