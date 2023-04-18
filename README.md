@@ -95,7 +95,23 @@ ___
 
 - Wireframe
 - User Stories
-- 
+- Planning
+- React component diagram
+- React page setup
+- Linking react Router to Github Pages: https://react-bootstrap.github.io/components/navbar/
+
+### Day 2
+
+- Getting into the meat of it
+- API call
+    - One for all the data
+    - One for the person's location
+
+### Day 3
+
+
+### Day 4
+- Presentation
 
 
 6. Once the MVP requirements were complete, I used my remaining time to implement additional bonus features

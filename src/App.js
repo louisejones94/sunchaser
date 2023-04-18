@@ -4,6 +4,7 @@ import Place from './routes/Place';
 import NavBar from './components/NavBar';
 import PageNotFound from './routes/PageNotFound';
 import { Routes, Route } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
