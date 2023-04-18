@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Forecast from "../components/Forecast";
 import {sortByKey} from "../helpers/sort.js";
 
-export default function Place() {
+export default function Shortlist() {
     const [zipCode, setZipCode] = useState("");
     const [forecast, setForecast] = useState(null);
     const [locationChoices, setLocationChoices] = useState(null);
@@ -68,13 +68,13 @@ export default function Place() {
                 <label>
                     Please choose your current location:
                     {/* Dropdown from list of locations from API */}
-                    <select id="location">
-                        {locationChoices.map((location) => (
-                            <option key={location.value} value={location.value}>
-                                {location.label}
-                            </option>
-                        ))}
-                    </select>
+                    <input
+                        name="location"
+                        type="text"
+                        required
+                        placeholder="Please select a location"
+                        ref={userLocation}
+                    />
                 </label>
                 <button type="submit">Get forecast</button>
                 {forecast && <Forecast forecast={forecast}/>}

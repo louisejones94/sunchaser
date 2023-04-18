@@ -1,5 +1,7 @@
 import './css/App.css';
 import Home from './routes/Home';
+import Search from './routes/Search';
+import Shortlist from './routes/Shortlist';
 import Place from './routes/Place';
 import NavBar from './components/NavBar';
 import PageNotFound from './routes/PageNotFound';
@@ -12,6 +14,8 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/shortlist" element={<Shortlist />} />
         <Route path="/place" element={<Place />}>
           <Route path=":place" element={<Place />} />
         </Route>

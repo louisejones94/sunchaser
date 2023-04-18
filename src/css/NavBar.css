@@ -16,6 +16,7 @@
 
 .NavBarLink:hover {
     text-decoration: underline;
+    color: #ffde5a;
 }
 
 .NavBarLink:active {

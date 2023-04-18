@@ -7,7 +7,7 @@ export default function NavBar () {
         <nav className="NavBar">
             <img src={logo} alt="SunChaser logo" height="250px" />
             <Link className="NavBarLink" to="/">Home</Link>
-            <Link className="NavBarLink" to="/place">Place</Link>
+            <Link className="NavBarLink" to="/search">Search</Link>
         </nav>
     )
 }
