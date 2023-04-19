@@ -1,6 +1,6 @@
 import SunnyPlaceCard from "./SunnyPlaceCard";
 
-export default function SunnyPlacesList({forecasts, dateChoice}) {
+export default function SunnyPlacesList({forecasts, dateChoice, addPlaceToShortlist, removePlaceFromShortlist, shortlist}) {
 
     let sunnyForecasts = [...forecasts].filter((item) => 
         // The date equals the chosen date
@@ -20,7 +20,7 @@ export default function SunnyPlacesList({forecasts, dateChoice}) {
         // sort by hottest first
         sunnyForecasts.sort((a,b)=>Number(b.Period[0].Rep[0].Dm)-Number(a.Period[0].Rep[0].Dm)) 
         .slice(0,10)
-        .map((item, index) => <SunnyPlaceCard place={item} key={index} />);
+        .map((item, index) => <SunnyPlaceCard place={item} key={index} listType="sunny-place" shortlist={shortlist} addPlaceToShortlist={addPlaceToShortlist} removePlaceFromShortlist={removePlaceFromShortlist} />);
 
     return (
         <div>

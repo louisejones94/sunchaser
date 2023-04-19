@@ -5,7 +5,7 @@ import DropDown from "../components/DropDown";
 import DatePicker from "../components/DatePicker";
 import SunnyPlacesList from "../components/SunnyPlacesList";
 
-export default function Search() {
+export default function Search({addPlaceToShortlist, removePlaceFromShortlist}) {
     const [forecasts, setForecasts] = useState(null);
     const [locationOptions, setLocationOptions] = useState(null);
     const [locationChoice, setLocationChoice] = useState("");
@@ -14,16 +14,14 @@ export default function Search() {
     
 
     function handleSelectChange(e) {
-        e.preventDefault();
         let newUserLocation = e.target.value;
         // Maximum call stack error, so first check the locationChoice has changed before updating the State
         if (newUserLocation !== locationChoice) {
             setLocationChoice(newUserLocation);
         }
     }
-
+    
     const handleDateChange = (e) => {
-        e.preventDefault();
         let newDate = e.target.value;
         if (newDate !== dateChoice) {
             setDateChoice(e.target.value);
@@ -81,7 +79,7 @@ export default function Search() {
             {/* If it's sunny, show a happy message. */}
             {/* If it's not sunny, show the list of sunny places */}
             
-            {forecasts && <SunnyPlacesList forecasts={forecasts} dateChoice={dateChoice} />}
+            {forecasts && <SunnyPlacesList forecasts={forecasts} dateChoice={dateChoice} addPlaceToShortlist={addPlaceToShortlist} removePlaceFromShortlist={removePlaceFromShortlist} />}
         </div>
     )
 }
