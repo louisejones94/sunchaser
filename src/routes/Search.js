@@ -5,12 +5,13 @@ import DropDown from "../components/DropDown";
 import DatePicker from "../components/DatePicker";
 import SunnyPlacesList from "../components/SunnyPlacesList";
 
-export default function Search({addPlaceToShortlist, removePlaceFromShortlist}) {
+export default function Search({addPlaceToShortlist, removePlaceFromShortlist, selectedIDs, handleSelectClick, clearSelectedIDs}) {
     const [forecasts, setForecasts] = useState(null);
     const [locationOptions, setLocationOptions] = useState(null);
     const [locationChoice, setLocationChoice] = useState("");
     const [dateChoice, setDateChoice] = useState(new Date().toJSON().slice(0, 10));
     const [forecastParameters, setForecastParameters] = useState(null);
+    // let listType = "shortlist";
     
 
     function handleSelectChange(e) {
@@ -79,7 +80,7 @@ export default function Search({addPlaceToShortlist, removePlaceFromShortlist}) 
             {/* If it's sunny, show a happy message. */}
             {/* If it's not sunny, show the list of sunny places */}
             
-            {forecasts && <SunnyPlacesList forecasts={forecasts} dateChoice={dateChoice} addPlaceToShortlist={addPlaceToShortlist} removePlaceFromShortlist={removePlaceFromShortlist} />}
+            {forecasts && <SunnyPlacesList forecasts={forecasts} dateChoice={dateChoice} addPlaceToShortlist={addPlaceToShortlist} removePlaceFromShortlist={removePlaceFromShortlist} handleSelectClick={handleSelectClick} selectedIDs={selectedIDs} clearSelectedIDs={clearSelectedIDs} />}
         </div>
     )
 }
