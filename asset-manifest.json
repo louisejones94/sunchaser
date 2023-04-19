@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/sunchaser/static/css/main.964fdded.css",
-    "main.js": "/sunchaser/static/js/main.b1c14013.js",
+    "main.css": "/sunchaser/static/css/main.32fabc00.css",
+    "main.js": "/sunchaser/static/js/main.1f6cee26.js",
     "static/js/787.b1b06600.chunk.js": "/sunchaser/static/js/787.b1b06600.chunk.js",
+    "static/media/big-logo.png": "/sunchaser/static/media/big-logo.20334aef1d3df180f104.png",
     "index.html": "/sunchaser/index.html",
-    "main.964fdded.css.map": "/sunchaser/static/css/main.964fdded.css.map",
-    "main.b1c14013.js.map": "/sunchaser/static/js/main.b1c14013.js.map",
+    "main.32fabc00.css.map": "/sunchaser/static/css/main.32fabc00.css.map",
+    "main.1f6cee26.js.map": "/sunchaser/static/js/main.1f6cee26.js.map",
     "787.b1b06600.chunk.js.map": "/sunchaser/static/js/787.b1b06600.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.964fdded.css",
-    "static/js/main.b1c14013.js"
+    "static/css/main.32fabc00.css",
+    "static/js/main.1f6cee26.js"
   ]
 }
