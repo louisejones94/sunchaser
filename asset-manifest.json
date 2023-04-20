@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/sunchaser/static/css/main.32fabc00.css",
-    "main.js": "/sunchaser/static/js/main.6341cdd2.js",
-    "static/js/787.b1b06600.chunk.js": "/sunchaser/static/js/787.b1b06600.chunk.js",
-    "static/media/big-logo.png": "/sunchaser/static/media/big-logo.20334aef1d3df180f104.png",
-    "index.html": "/sunchaser/index.html",
-    "main.32fabc00.css.map": "/sunchaser/static/css/main.32fabc00.css.map",
-    "main.6341cdd2.js.map": "/sunchaser/static/js/main.6341cdd2.js.map",
-    "787.b1b06600.chunk.js.map": "/sunchaser/static/js/787.b1b06600.chunk.js.map"
+    "main.css": "/static/css/main.32fabc00.css",
+    "main.js": "/static/js/main.d5bf78ca.js",
+    "static/js/787.b1b06600.chunk.js": "/static/js/787.b1b06600.chunk.js",
+    "static/media/big-logo.png": "/static/media/big-logo.20334aef1d3df180f104.png",
+    "index.html": "/index.html",
+    "main.32fabc00.css.map": "/static/css/main.32fabc00.css.map",
+    "main.d5bf78ca.js.map": "/static/js/main.d5bf78ca.js.map",
+    "787.b1b06600.chunk.js.map": "/static/js/787.b1b06600.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.32fabc00.css",
-    "static/js/main.6341cdd2.js"
+    "static/js/main.d5bf78ca.js"
   ]
 }
