@@ -3,10 +3,11 @@ import Checkbox from "./Checkbox";
 import {useState, useEffect, Button} from "react";
 import ButtonGroup from "./ButtonGroup";
 
-export default function SunnyPlacesList({forecasts, dateChoice, addPlaceToShortlist, removePlaceFromShortlist, shortlist, handleSelectClick, selectedIDs, clearSelectedIDs}) {
+export default function SunnyPlacesList({forecasts, dateChoice, addPlaceToShortlist, removePlaceFromShortlist, shortlist, handleSelectClick, selectedIDs, clearSelectedIDs, handleSelectAll, allSelected, clearSelectAll}) {
 
     let listType = "sunny-place";
     const [sunnyPlaces, setSunnyPlaces] = useState(null);
+    const [sunnyList, setSunnyList] = useState(null);
     
     useEffect(function() {
         let sunnyForecasts = [...forecasts].filter((item) => 
@@ -21,34 +22,40 @@ export default function SunnyPlacesList({forecasts, dateChoice, addPlaceToShortl
             && item.Period[0].Rep[1].PPn === "0"
         );
 
-        let newSunnyPlaces = 
+        let newSunnyList = 
         // // sort by least chance of precipitation
         // sunnyForecasts.sort((a,b)=>Number(a.Period[0].Rep[0].PPd)-Number(b.Period[0].Rep[0].PPd)) 
         // sort by hottest first
         sunnyForecasts.sort((a,b)=>Number(b.Period[0].Rep[0].Dm)-Number(a.Period[0].Rep[0].Dm)) 
         .slice(0,10)
-        .map((item, index) => <SunnyPlaceCard place={item} key={index} listType={listType} shortlist={shortlist} addPlaceToShortlist={addPlaceToShortlist} removePlaceFromShortlist={removePlaceFromShortlist} handleSelectClick={handleSelectClick} selectedIDs={selectedIDs} clearSelectedIDs={clearSelectedIDs} />);
 
+        let newSunnyPlaces =
+        newSunnyList.map((item, index) => <SunnyPlaceCard place={item} key={index} listType={listType} shortlist={shortlist} addPlaceToShortlist={addPlaceToShortlist} removePlaceFromShortlist={removePlaceFromShortlist} handleSelectClick={handleSelectClick} selectedIDs={selectedIDs} clearSelectedIDs={clearSelectedIDs} allSelected={allSelected} sunnyList={newSunnyList} clearSelectAll={clearSelectAll}/>);
+
+        setSunnyList(newSunnyList);
         setSunnyPlaces(newSunnyPlaces);
 
-        }, [forecasts, dateChoice, addPlaceToShortlist, removePlaceFromShortlist, shortlist, handleSelectClick, selectedIDs, clearSelectedIDs]);
+        }, [forecasts, dateChoice, addPlaceToShortlist, removePlaceFromShortlist, shortlist, handleSelectClick, selectedIDs, clearSelectedIDs, clearSelectAll]);
 
     
     return (
         <div>
-            <h2>10 random sunny places:</h2>
-            <ButtonGroup listType={listType} addPlaceToShortlist={addPlaceToShortlist} removePlaceFromShortlist={removePlaceFromShortlist} place={selectedIDs} clearSelectedIDs={clearSelectedIDs} />
+            <h2>10 sunny places:</h2>
+            <ButtonGroup listType={listType} addPlaceToShortlist={addPlaceToShortlist} removePlaceFromShortlist={removePlaceFromShortlist} place={selectedIDs} clearSelectedIDs={clearSelectedIDs} clearSelectAll={clearSelectAll} />
             <ul>
-                {/* <label>
+                <label>
                     <Checkbox
-                        type="checkbox"
-                        name="selectAll"
+                        key="selectAll"
                         id="selectAll"
-                        handleClick={handleSelectAll(sunnyPlaces)}
-                        selectedIDs={allSelected}
+                        place={sunnyPlaces}
+                        allSelected={allSelected}
+                        selectedIDs={selectedIDs}
+                        list={sunnyList}
+                        handleSelectClick={handleSelectClick}
+                        handleSelectAll={handleSelectAll}
                     />
                     Select all
-                </label> */}
+                </label>
                 {sunnyPlaces}
             </ul>
 

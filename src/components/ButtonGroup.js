@@ -1,4 +1,4 @@
-export default function ButtonGroup({listType, addPlaceToShortlist, removePlaceFromShortlist, place, clearSelectedIDs}) {
+export default function ButtonGroup({listType, addPlaceToShortlist, removePlaceFromShortlist, place, clearSelectedIDs, clearSelectAll}) {
 
     function handleButtonClick(e) {
         e.preventDefault();
@@ -37,6 +37,7 @@ export default function ButtonGroup({listType, addPlaceToShortlist, removePlaceF
 
         // Clear the selections
         clearSelectedIDs();
+        clearSelectAll();
     }
 
     return (

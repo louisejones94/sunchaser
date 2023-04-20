@@ -5,14 +5,12 @@ import DropDown from "../components/DropDown";
 import DatePicker from "../components/DatePicker";
 import SunnyPlacesList from "../components/SunnyPlacesList";
 
-export default function Search({addPlaceToShortlist, removePlaceFromShortlist, selectedIDs, handleSelectClick, clearSelectedIDs}) {
+export default function Search({addPlaceToShortlist, selectedIDs, handleSelectClick, clearSelectedIDs, handleSelectAll, allSelected, clearSelectAll}) {
     const [forecasts, setForecasts] = useState(null);
     const [locationOptions, setLocationOptions] = useState(null);
     const [locationChoice, setLocationChoice] = useState("");
     const [dateChoice, setDateChoice] = useState(new Date().toJSON().slice(0, 10));
-    const [forecastParameters, setForecastParameters] = useState(null);
-    // let listType = "shortlist";
-    
+    const [forecastParameters, setForecastParameters] = useState(null);    
 
     function handleSelectChange(e) {
         let newUserLocation = e.target.value;
@@ -31,9 +29,7 @@ export default function Search({addPlaceToShortlist, removePlaceFromShortlist, s
 
     function handleSubmit(e) {
         e.preventDefault();
-        // Get the forecast for the selected location
-
-
+        // Get the forecast for the selected location ---------------------- TODO
     }
 
     // Function to get the list of locations to feed the dropdown options
@@ -64,6 +60,7 @@ export default function Search({addPlaceToShortlist, removePlaceFromShortlist, s
                 setForecasts(forecasts);
             })
             .catch((error) => console.log("Error! ", error))
+    // Only run one time
     }, []);
     
     return (
@@ -80,7 +77,7 @@ export default function Search({addPlaceToShortlist, removePlaceFromShortlist, s
             {/* If it's sunny, show a happy message. */}
             {/* If it's not sunny, show the list of sunny places */}
             
-            {forecasts && <SunnyPlacesList forecasts={forecasts} dateChoice={dateChoice} addPlaceToShortlist={addPlaceToShortlist} removePlaceFromShortlist={removePlaceFromShortlist} handleSelectClick={handleSelectClick} selectedIDs={selectedIDs} clearSelectedIDs={clearSelectedIDs} />}
+            {forecasts && <SunnyPlacesList forecasts={forecasts} dateChoice={dateChoice} addPlaceToShortlist={addPlaceToShortlist} handleSelectClick={handleSelectClick} selectedIDs={selectedIDs} clearSelectedIDs={clearSelectedIDs} handleSelectAll={handleSelectAll} allSelected={allSelected} clearSelectAll={clearSelectAll} />}
         </div>
     )
 }

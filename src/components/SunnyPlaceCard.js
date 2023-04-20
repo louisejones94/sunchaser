@@ -2,15 +2,18 @@ import "../css/SunnyPlaceCard.css";
 import Checkbox from "./Checkbox";
 import ButtonGroup from "./ButtonGroup";
 
-export default function SunnyPlaceCard({place, addPlaceToShortlist, removePlaceFromShortlist, listType, handleSelectClick, clearSelectedIDs, selectedIDs}) {
+export default function SunnyPlaceCard({place, addPlaceToShortlist, removePlaceFromShortlist, listType, handleSelectClick, clearSelectedIDs, selectedIDs, handleSelectAll, sunnyList, allSelected, clearSelectAll}) {
 
     return (
-        <li>
+        <li key={place.i}>
             <Checkbox
-                key={place.i}
+                id={place.i}
                 place={place}
-                handleSelectClick={handleSelectClick}
                 selectedIDs={selectedIDs}
+                list={sunnyList}
+                handleSelectClick={handleSelectClick}
+                handleSelectAll={handleSelectAll}
+                allSelected={allSelected}
             />
             <h3>{place.name}</h3>
             <ul>
@@ -18,7 +21,7 @@ export default function SunnyPlaceCard({place, addPlaceToShortlist, removePlaceF
                 <li>{place.Period[0].Rep[0].PPd} % chance of rain today</li>
                 <li>{place.Period[0].Rep[1].PPn} % chance of rain tonight</li>
                 <li>{place.Period[0].Rep[0].Dm} &deg;C max temperature today</li>
-                <ButtonGroup listType={listType} addPlaceToShortlist={addPlaceToShortlist} removePlaceFromShortlist={removePlaceFromShortlist} place={place} clearSelectedIDs={clearSelectedIDs} />
+                <ButtonGroup listType={listType} addPlaceToShortlist={addPlaceToShortlist} removePlaceFromShortlist={removePlaceFromShortlist} place={place} clearSelectedIDs={clearSelectedIDs} clearSelectAll={clearSelectAll} />
             </ul>
         </li>
     )
