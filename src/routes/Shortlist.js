@@ -6,10 +6,11 @@ import SunnyPlaceCard from "../components/SunnyPlaceCard";
 import ButtonGroup from "../components/ButtonGroup";
 import Checkbox from "../components/Checkbox";
 
-export default function Shortlist({shortlist, removePlaceFromShortlist, selectedIDs, handleSelectClick, addPlaceToShortlist, clearSelectedIDs, allSelected, handleSelectAll, clearSelectAll}) {
+export default function Shortlist({shortlist, removePlaceFromShortlist, selectedIDs, handleSelectClick, addPlaceToShortlist, clearSelectedIDs, allSelected, handleSelectAll, clearSelectAll, updateFontColour}) {
     
     let listType="shortlist";
-    let shortlistPlaces = shortlist.map((item, index) => <SunnyPlaceCard place={item} key={index} listType={listType} removePlaceFromShortlist={removePlaceFromShortlist} handleSelectClick={handleSelectClick} selectedIDs={selectedIDs} clearSelectedIDs={clearSelectedIDs} clearSelectAll={clearSelectAll} />);
+
+    let shortlistPlaces = shortlist.map((item, index) => <SunnyPlaceCard place={item} key={index} listType={listType} removePlaceFromShortlist={removePlaceFromShortlist} handleSelectClick={handleSelectClick} selectedIDs={selectedIDs} clearSelectedIDs={clearSelectedIDs} clearSelectAll={clearSelectAll} updateFontColour={updateFontColour} />);
      
     return (
         <div>

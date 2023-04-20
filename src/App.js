@@ -59,10 +59,24 @@ function App() {
       }
       else {
         console.log("place is not in shortlist so we'll add it");
-        newShortlist = [...newShortlist, place]
+        console.log(place);
+        place.fontColour="#000000";
+        console.log(place);
+        newShortlist = [...newShortlist, place];
+        console.log(newShortlist);
       } 
     })
     setShortlist(newShortlist)
+  }
+
+  function updateFontColour(place, newFontColour) {
+    let newShortlist = [...shortlist].map((item) => {
+      if (item.i === place.i) {
+        item.fontColour = newFontColour;
+      }
+      return item;
+    })
+    setShortlist(newShortlist);
   }
 
   function removePlaceFromShortlist(places) {
@@ -91,7 +105,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/search" element={<Search shortlist={shortlist} addPlaceToShortlist={addPlaceToShortlist} selectedIDs={selectedIDs} handleSelectClick={handleSelectClick} clearSelectedIDs={clearSelectedIDs} handleSelectAll={handleSelectAll} allSelected={allSelected} clearSelectAll={clearSelectAll} />} />
-        <Route path="/shortlist" element={<Shortlist shortlist={shortlist} removePlaceFromShortlist={removePlaceFromShortlist} selectedIDs={selectedIDs} handleSelectClick={handleSelectClick} clearSelectedIDs={clearSelectedIDs} handleSelectAll={handleSelectAll} allSelected={allSelected} clearSelectAll={clearSelectAll} />} />
+        <Route path="/shortlist" element={<Shortlist shortlist={shortlist} removePlaceFromShortlist={removePlaceFromShortlist} selectedIDs={selectedIDs} handleSelectClick={handleSelectClick} clearSelectedIDs={clearSelectedIDs} handleSelectAll={handleSelectAll} allSelected={allSelected} clearSelectAll={clearSelectAll} updateFontColour={updateFontColour} />} />
         <Route path="/place" element={<Place />}>
           <Route path=":place" element={<Place />} />
         </Route>

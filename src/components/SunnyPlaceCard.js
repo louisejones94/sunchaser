@@ -2,7 +2,14 @@ import "../css/SunnyPlaceCard.css";
 import Checkbox from "./Checkbox";
 import ButtonGroup from "./ButtonGroup";
 
-export default function SunnyPlaceCard({place, addPlaceToShortlist, removePlaceFromShortlist, listType, handleSelectClick, clearSelectedIDs, selectedIDs, handleSelectAll, sunnyList, allSelected, clearSelectAll}) {
+export default function SunnyPlaceCard({place, addPlaceToShortlist, removePlaceFromShortlist, listType, handleSelectClick, clearSelectedIDs, selectedIDs, handleSelectAll, sunnyList, allSelected, clearSelectAll, updateFontColour}) {
+
+    const handleColourChange = (e) => {
+        let newFontColour = e.target.value;
+        updateFontColour(place, newFontColour);
+    }
+
+
 
     return (
         <li key={place.i}>
@@ -15,7 +22,8 @@ export default function SunnyPlaceCard({place, addPlaceToShortlist, removePlaceF
                 handleSelectAll={handleSelectAll}
                 allSelected={allSelected}
             />
-            <h3>{place.name}</h3>
+            <h3 style={{ color: `${place.fontColour}` }}>{place.name}</h3>
+            {listType === "shortlist" && <input type="color" value={place.fontColour} onChange={handleColourChange} />}
             <ul>
                 <li>Weather type (1 is a sunny day): {place.Period[0].Rep[0].W}</li>
                 <li>{place.Period[0].Rep[0].PPd} % chance of rain today</li>
