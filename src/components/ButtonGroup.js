@@ -1,3 +1,5 @@
+import '../css/ButtonGroup.css';
+
 export default function ButtonGroup({listType, addPlaceToShortlist, removePlaceFromShortlist, place, clearSelectedIDs, clearSelectAll}) {
 
     function handleButtonClick(e) {
@@ -17,11 +19,11 @@ export default function ButtonGroup({listType, addPlaceToShortlist, removePlaceF
         if(listType === "shortlist") {
             // If we have clicked the button to mark as visited
             if(e.target.classList.contains("VisitButton")) {
-                if(e.target.parentNode.classList.contains("visited")) {
-                    e.target.parentNode.classList.remove("visited");
+                if(e.target.classList.contains("visited")) {
+                    e.target.classList.remove("visited");
                 }
                 else {
-                    e.target.parentNode.classList.add("visited");
+                    e.target.classList.add("visited");
                 }
             }
             // Otherwise we wamt to delete from the shortlist
@@ -41,10 +43,10 @@ export default function ButtonGroup({listType, addPlaceToShortlist, removePlaceF
     }
 
     return (
-        <>
-            {listType==="sunny-place" && <li><button className="PlaceButton AddButton" onClick={handleButtonClick}>Add to shortlist!</button></li>}
-            {listType==="shortlist" && <li><button className="PlaceButton VisitButton" onClick={handleButtonClick}>Mark as visited</button></li>}
-            {listType==="shortlist" && <li><button className="PlaceButton DeleteButton" onClick={handleButtonClick}>Remove from shortlist</button></li>}
-        </>
+        <div className="ButtonGroup">
+            {listType!=="shortlist" && <button className="PlaceButton AddButton" onClick={handleButtonClick}>📌 Save</button>}
+            {listType==="shortlist" && <button className="PlaceButton VisitButton" onClick={handleButtonClick}>✅ Visited</button>}
+            {listType==="shortlist" && <button className="PlaceButton DeleteButton" onClick={handleButtonClick}>🗑️ Remove</button>}
+        </div>
     )
 }

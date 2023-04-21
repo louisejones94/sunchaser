@@ -1,0 +1,21 @@
+.ButtonGroup {
+    padding: 3px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.PlaceButton {
+    border: 3px solid #3331C5;
+    border-radius: 2px;
+    width: 100px;
+    margin: 3px 0;
+}
+
+.selectAll > .ButtonGroup {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: space-between;
+}

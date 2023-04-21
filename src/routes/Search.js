@@ -4,6 +4,8 @@ import {sortByKey} from "../helpers/sort.js";
 import DropDown from "../components/DropDown";
 import DatePicker from "../components/DatePicker";
 import SunnyPlacesList from "../components/SunnyPlacesList";
+import SunnyPlaceCard from "../components/SunnyPlaceCard.js";
+import "../css/Search.css";
 
 export default function Search({addPlaceToShortlist, selectedIDs, handleSelectClick, clearSelectedIDs, handleSelectAll, allSelected, clearSelectAll}) {
     const [forecasts, setForecasts] = useState(null);
@@ -11,11 +13,13 @@ export default function Search({addPlaceToShortlist, selectedIDs, handleSelectCl
     const [locationChoice, setLocationChoice] = useState("");
     const [dateChoice, setDateChoice] = useState(new Date().toJSON().slice(0, 10));
     const [forecastParameters, setForecastParameters] = useState(null);    
+    const [showList, setShowList] = useState(false);
 
     function handleSelectChange(e) {
         let newUserLocation = e.target.value;
         // Maximum call stack error, so first check the locationChoice has changed before updating the State
         if (newUserLocation !== locationChoice) {
+            console.log(newUserLocation);
             setLocationChoice(newUserLocation);
         }
     }
@@ -29,6 +33,8 @@ export default function Search({addPlaceToShortlist, selectedIDs, handleSelectCl
 
     function handleSubmit(e) {
         e.preventDefault();
+        console.log("clicked");
+        setShowList(true);
         // Get the forecast for the selected location ---------------------- TODO
     }
 
@@ -56,28 +62,32 @@ export default function Search({addPlaceToShortlist, selectedIDs, handleSelectCl
                 // Split the API response into parameters and forecasts
                 let parameters = results.SiteRep.Wx.Param;
                 setForecastParameters(parameters);
-                let forecasts = results.SiteRep.DV.Location;
-                setForecasts(forecasts);
+                let newForecasts = results.SiteRep.DV.Location;
+                setForecasts(newForecasts);
             })
             .catch((error) => console.log("Error! ", error))
     // Only run one time
     }, []);
     
     return (
-        <div>
-            <h1>Let's chase the sun!</h1>
-            <h2>First things first, let's see if there's sun where you are...</h2>
-            <form onSubmit={handleSubmit}>
-                <DropDown locationOptions={locationOptions} locationChoice={locationChoice} handleSelectChange={handleSelectChange} />
-                <DatePicker dateChoice={dateChoice} handleDateChange={handleDateChange} />
-                <button type="submit">Is it sunny near me?</button>
-            </form>
-            {/* Show a foreceast for the selection location */}
-            {/* {forecasts && <Forecast forecasts={forecasts} placeID={locationChoice}/>} */}
-            {/* If it's sunny, show a happy message. */}
-            {/* If it's not sunny, show the list of sunny places */}
-            
-            {forecasts && <SunnyPlacesList forecasts={forecasts} dateChoice={dateChoice} addPlaceToShortlist={addPlaceToShortlist} handleSelectClick={handleSelectClick} selectedIDs={selectedIDs} clearSelectedIDs={clearSelectedIDs} handleSelectAll={handleSelectAll} allSelected={allSelected} clearSelectAll={clearSelectAll} />}
+        <div className="Search">
+            <div className="WideCard"> 
+                <h1>Let's chase the sun!</h1>
+            </div>
+            <br />
+            <div className="WideCard"> 
+                <h2>Is it sunny near me?</h2>
+                <form className="Form" onSubmit={handleSubmit}>
+                    <DropDown locationOptions={locationOptions} locationChoice={locationChoice} handleSelectChange={handleSelectChange} />
+                    <DatePicker dateChoice={dateChoice} handleDateChange={handleDateChange} />
+                    {/* Show a foreceast for the selection location */}
+                    {forecasts && locationChoice && <SunnyPlaceCard place={[...forecasts].filter((item) => item.i === locationChoice)[0]} key="userLocation" listType="user-location" addPlaceToShortlist={addPlaceToShortlist} handleSelectClick={handleSelectClick} selectedIDs={selectedIDs} clearSelectedIDs={clearSelectedIDs} allSelected={allSelected} sunnyList={[...forecasts].filter((item) => item.i === locationChoice)} clearSelectAll={clearSelectAll}/> } 
+                    {locationChoice && <button className="SubmitButton" type="submit">Where is the sun?</button>}
+                </form>
+            </div>
+            <div className="WideCard">
+                {forecasts && showList && <SunnyPlacesList forecasts={forecasts} dateChoice={dateChoice} addPlaceToShortlist={addPlaceToShortlist} handleSelectClick={handleSelectClick} selectedIDs={selectedIDs} clearSelectedIDs={clearSelectedIDs} handleSelectAll={handleSelectAll} allSelected={allSelected} clearSelectAll={clearSelectAll} />}
+            </div>
         </div>
     )
 }

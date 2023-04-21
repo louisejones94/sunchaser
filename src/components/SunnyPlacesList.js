@@ -10,6 +10,7 @@ export default function SunnyPlacesList({forecasts, dateChoice, addPlaceToShortl
     const [sunnyList, setSunnyList] = useState(null);
     
     useEffect(function() {
+
         let sunnyForecasts = [...forecasts].filter((item) => 
         // The date equals the chosen date
             // Currently limited to today only
@@ -39,10 +40,9 @@ export default function SunnyPlacesList({forecasts, dateChoice, addPlaceToShortl
 
     
     return (
-        <div>
-            <h2>10 sunny places:</h2>
-            <ButtonGroup listType={listType} addPlaceToShortlist={addPlaceToShortlist} removePlaceFromShortlist={removePlaceFromShortlist} place={selectedIDs} clearSelectedIDs={clearSelectedIDs} clearSelectAll={clearSelectAll} />
-            <ul>
+        <div className="WideCard">
+            <h2>10 hottest sunny places</h2>
+            <div className="selectAll">
                 <label>
                     <Checkbox
                         key="selectAll"
@@ -56,11 +56,12 @@ export default function SunnyPlacesList({forecasts, dateChoice, addPlaceToShortl
                     />
                     Select all
                 </label>
+                <ButtonGroup className="TopButton" listType={listType} addPlaceToShortlist={addPlaceToShortlist} removePlaceFromShortlist={removePlaceFromShortlist} place={selectedIDs} clearSelectedIDs={clearSelectedIDs} clearSelectAll={clearSelectAll} />
+            </div>
+            <ul>
+                
                 {sunnyPlaces}
             </ul>
-
-            {/* <p>Current place is {selectedIDs}</p>
-            <p>Current shortlist is {shortlist}</p> */}
         </div>
         
     )

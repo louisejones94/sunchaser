@@ -9,28 +9,33 @@ export default function SunnyPlaceCard({place, addPlaceToShortlist, removePlaceF
         updateFontColour(place, newFontColour);
     }
 
-
-
     return (
         <li key={place.i}>
-            <Checkbox
-                id={place.i}
-                place={place}
-                selectedIDs={selectedIDs}
-                list={sunnyList}
-                handleSelectClick={handleSelectClick}
-                handleSelectAll={handleSelectAll}
-                allSelected={allSelected}
-            />
-            <h3 style={{ color: `${place.fontColour}` }}>{place.name}</h3>
-            {listType === "shortlist" && <input type="color" value={place.fontColour} onChange={handleColourChange} />}
-            <ul>
-                <li>Weather type (1 is a sunny day): {place.Period[0].Rep[0].W}</li>
-                <li>{place.Period[0].Rep[0].PPd} % chance of rain today</li>
-                <li>{place.Period[0].Rep[1].PPn} % chance of rain tonight</li>
-                <li>{place.Period[0].Rep[0].Dm} &deg;C max temperature today</li>
-                <ButtonGroup listType={listType} addPlaceToShortlist={addPlaceToShortlist} removePlaceFromShortlist={removePlaceFromShortlist} place={place} clearSelectedIDs={clearSelectedIDs} clearSelectAll={clearSelectAll} />
-            </ul>
+            <div className="SunnyPlaceCard">
+                <Checkbox
+                    id={place.i}
+                    place={place}
+                    selectedIDs={selectedIDs}
+                    list={sunnyList}
+                    handleSelectClick={handleSelectClick}
+                    handleSelectAll={handleSelectAll}
+                    allSelected={allSelected}
+                />
+                <div className="SunnyPlace">
+                    <h3 style={{ color: `${place.fontColour}` }}>{place.name}</h3>
+                    {listType === "shortlist" && <input type="color" value={place.fontColour} onChange={handleColourChange} />}
+                    <ul>
+                        <li>Weather type (1 is a sunny day): {place.Period[0].Rep[0].W}</li>
+                        <li>{place.Period[0].Rep[0].PPd} % chance of rain today</li>
+                        <li>{place.Period[0].Rep[1].PPn} % chance of rain tonight</li>
+                        <li>{place.Period[0].Rep[0].Dm} &deg;C max temperature today</li>
+                    </ul>
+                </div>
+                <div className="Buttons"> 
+                    <ButtonGroup listType={listType} addPlaceToShortlist={addPlaceToShortlist} removePlaceFromShortlist={removePlaceFromShortlist} place={place} clearSelectedIDs={clearSelectedIDs} clearSelectAll={clearSelectAll} />
+                </div>
+
+            </div>
         </li>
     )
 }

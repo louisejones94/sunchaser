@@ -1,0 +1,17 @@
+.DropDown label {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    text-align: left;
+    width: 40%;
+    line-height: 26px;
+    margin-bottom: 10px 10px;
+}
+
+.DropDown select {
+    margin: 0 10%;
+    line-height: 26px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+

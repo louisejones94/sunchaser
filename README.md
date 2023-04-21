@@ -2,34 +2,35 @@
 
 This repo contains the source code for my second project of General Assembly's Software Engineering Immersive course (March 13th - June 9th 2023). 
 
-The project for
+The project is my first attempt to showcase the skills I have been picking up in React, which was totally new to me before the course.
 
-Project 1 runs from 29th March - 3rd April (4 working days) and is an independent project.
+Project 2 runs from 17th - 20th April (4 working days) and is an independent project.
 
 ___
 
 ## Deployment
 
-[Chase the sun now via Github Pages](https://louisejones94.github.io/sunchaser/)
-
+[Chase the sun now via my custom domain](http://louisejones94.co.uk)
 
 ___
 ## Technologies Used
 
-- HTML
-    - Semantic tags
+
+- React
+    - Front end UI interactivity
+    - Hooks
+- JSX
+    - Data 
 - CSS
     - Flexbox
-    - Grid
-- JavaScript
-    - Classes 
-    - DOM manipulation
 - VS Code
     - Text editing
     - Accessing Git via CLI
 - Chrome developer tools
     - Inspecting elements, layout etc
     - Debugging
+- Postman
+    - API testing
 
 
 
@@ -38,29 +39,26 @@ ___
 
 ### Big Goals
 
-- Build a web application from scratch, without a starter codebase
-- Use your programming skills to work out the game logic for a simple game like Tic Tac Toe
-- Separate HTML, CSS, and JavaScript files in your application
-- Build an application to a specification that someone else gives you
-- Build a dynamic game that allows two players to compete from the same computer
-- Craft a README.md file that explains your app to the world
+1. A front-end list based React application that updates the UI and makes requests to the
+   API.
+2. Include data from a third-party API.
+3. Build a web application from scratch, without a starter codebase.
 
 ### Technical Requirements
 
-Your Noughts and Crosses app must:
-- **Render a game board in the browser**
-- **Switch turns** between X and O (or whichever markers you select)
-- **Visually display which side won** if a player gets three in a row, or show a draw if neither player wins
-- **Include separate HTML / CSS / JavaScript files**
-- Stick with **KISS (Keep It Simple Stupid)** and **DRY (Don't Repeat Yourself)** principles
-- Use **JavaScript** for **DOM manipulation**
-- **Deploy your game online**, where the rest of the world can access it
-- Use **semantic markup** for HTML and CSS (adhere to best practices)
-- Have well-formatted, and well-commented code
+- Add a new item to a list
+- Mark the item as complete/favorite/(watch, read, listen) later/flag/etc
+- Edit an item from a list
+- Remove an item from a list
+- Clear/delete all items
+- Clear/delete only marked items
+- Fetch data from at least one 3rd party API using Axios or `fetch`.
+- Make frequent Git commits with descriptive messages, explaining your commit.
+- Use React Router to handle multiple pages/views.
 
 ### Full Brief
 
-Found at https://git.generalassemb.ly/SEI-LND-71/Project-1
+Found at https://git.generalassemb.ly/SEI-LND-71/Project-2
 
 
 ___
@@ -68,25 +66,30 @@ ___
 
 ### User Stories
 
-- As a user, I should be able to start a new noughts and crosses game
-- As a user, I should be able to click on a square to add X first and then O, and so on
-- As a user, I should be shown a message after each turn for if I win, lose, tie or who's turn it is next
-- As a user, I should not be able to click the same square twice
-- As a user, I should be shown a message when I win, lose or tie
-- As a user, I should not be able to continue playing once I win, lose, or tie
-- As a user, I should be able to play the game again without refreshing the page
-- As a user, I should be able to give my name so I can track my score
-- As a user, I should be able to choose to play in one-player or two-player mode
+User Stories
+
+Number	Feature	Story	Bronze	Silver	Gold
+1	Location finder	As a sun-seeker, I want to enter my postcode, so that I can chase the sun	Enter postcode	Enter city	Use my current location
+2	Date finder	As a sun-seeker, I want to choose a date to chase the sun, so I can plan ahead 	Today only	Next 4 days date picker	
+3	Initial list	As a sun-seeker, I want to see a list of sunny places near me, so that I can choose where to go	List of place names	Place names with weather conditions	Weather icons, distance from user
+4	Ordered list	As a sun-seeker, I want the list to be in order with the sunniest places first, so that I can make my choice based on the amount of sun	Sunniest first	Closest first	Choose order of results (sunniest, most hours of sun, hottest, closest)
+5	Number in list	As a sun-seeker, I want to see a maximum of 10 sunny places, so that I'm not overwhelmed with options	Max 10 options	Choose number of options	Paginate and choose number per page
+6	User list	As a sun-seeker, I want to save my favourite sunny places to a shortlist, so I can see them all in one place	Save to list	Show/hide the list	Local storage the list
+7	Delete from user list	As a sun-seeker, I want to edit my shortlist, so if somewhere is no longer sunny, it is no longer on my shortlist	Delete from list	Deleted "visited" from list	Select all and delete from list
+8	Tick off "visited" places	As a sun-seeker, I want to mark sunny places as visited, so I can track where I've been or not been yet	Mark as visited		
+9	More place information	As a sun-seeker, I want to find out more about sunny places so I can decide if I want to visit	Link to place on Google or tripadvisor	Show top 3 things to do from tripadvisor	Filter by types of things to do
+10	Directions	As a sun-seeker, I want to get directions to a sunny place so I can figure out how to get there	Link to Google maps	Google maps API, driving only	Choose mode of transport
+11	Place pages	As a sun-seeker, I want to look at the weather at each place in more detail	useParams with weather for each place		
+
 
 ### Wireframe
 
-I opted for a low fidelity wireframe to show the game layout:
+I opted for a low fidelity wireframe to show the :
 ![Wireframe](./images/Wireframe.png)
 
 
 ### Project Management
 I wanted to organise my time better than Project One. I used [this Jira board](https://louisejones.atlassian.net/jira/software/c/projects/SUN/boards/1) to add in target start and end dates and time tracking estimates so I could check how realistic my original plans were.
-
 
 ___
 ## Build/Code Process
@@ -98,7 +101,7 @@ ___
 - Planning
 - React component diagram
 - React page setup
-- Linking react Router to Github Pages: https://react-bootstrap.github.io/components/navbar/
+- Linking react Router to Github Pages
 
 ### Day 2
 
@@ -107,127 +110,58 @@ ___
     - One for all the data
     - One for the person's location
     - Return a list of sunny places
-    - Some kind of ordering
+    - Order the returned list
 - User shortlist
     - Add to list
     - Mark as visited
     - Remove from list
-- It turns out it is just extremely hot in the Highlands today: https://www.independent.co.uk/news/uk/met-office-scottish-highlands-scotland-britons-northern-ireland-b2321262.html
+- After some time thinking my data or code must be wrong as Aberdeen and Skye were showing as the hottest places in the UK, it turns out to just be extremely hot in the Highlands today: https://www.independent.co.uk/news/uk/met-office-scottish-highlands-scotland-britons-northern-ireland-b2321262.html
 
 
 ### Day 3
-
+- Select all
+    - Add all to shortlist
+    - Delete all
 
 ### Day 4
-- Presentation
-
-
-6. Once the MVP requirements were complete, I used my remaining time to implement additional bonus features
-7. Validation: I ran my code through various validators to check for issues I hadn't noticed in my own testing
-    - HTML: 
-    - CSS: 
-    - Accessibility: 
+- The HTTP hiccup (more on this in Challenges)
+- Setting up a custom domain
+- Styling (reduced time for this due to the HTTP hiccup)
 
 ___
 ## Challenges
 
-### A simple solution to a time-consuming problem!
+### The HTTP Hiccup (and/or why didn't I test earlier!)
 
-I was initially lost in over-complicating the problem of showing whose turn it is right now. Effectively I was writing the logic that sits behind toggling a class:
+This was frustrating as it took up a fair amount of my limited time and is still unresolved. Unfortunately my Github Pages is hosted via HTTPS but my chosen API (which fetches data happily in Postman and localhost) is HTTP so is blocked as mixed content on Github Pages. I spent a lot of time trying to debug this, including setting up a custom domain and its DNS settings, and trying to use several proxies, each with their own issues. My lesson learned is to check and test the full API (and each major feature) on Github Pages, not just on localhost, as I would have caught the issue much sooner and potentially with enough time to pivot to a different host or a different API.
 
-```js
-function showTurn() {
-    players.forEach(function(player) {
-        // if the player's name matches the current player's name
-        if (player.name === scoreboard.currentPlayer.name) {
-            document.querySelector(`#${scoreboard.currentPlayer.playerNumber}-stats > h3`).classList.add('hidden');
-            document.querySelector(`#${scoreboard.otherPlayer.playerNumber}-stats > h3`).classList.remove('hidden');
-        }
-        else {
-            document.querySelector(`#${scoreboard.currentPlayer.playerNumber}-stats > h3`).classList.remove('hidden');
-            document.querySelector(`#${scoreboard.otherPlayer.playerNumber}-stats > h3`).classList.add('hidden');
-        }
-    })
-}
-```
+### Making reusable components flexible enough
 
-Applying the principle of KISS, and taking some time away from the problem, allowed me to realise that I could simply toggle the class for each of the players, without needing to sort through who was the current player:
-
-```js
-function showTurn() {
-    players.forEach(function(player) {
-        document.querySelector(`#${player.playerNumber}-turn`).classList.toggle('hidden');
-    })
-}
-```
-
-### Comparison is the thief of joy
-
-Trying to choose which bonus exercises to work through with limited time really tested my indecisiveness. I felt myself comparing my work to others in the class, who had chosen different bonus exercises and so seemed to be ahead of me. This project has been an exercise in letting go of worrying about others and focussing only on my goals. 
+I love the idea of reusable components for their efficiency and ease of understanding.
 
 ___
 ## Wins
 
-### Game outcome logic
+### Planning and prioritising
 
-I'm particularly proud of my game outcome logic because I'd heard in our daily standups that this was a sticking point for my classmates. As a self-proclaimed Extremely Lazy Person (and hopefully therefore a natual programmer!) I felt there **must** be way around a giant IF...ELSE statement. 
+After Project One, I identified a risk of getting distracted by something new and shiny (designing my own font, I'm looking at you...) so made a conscious effort to slow down and plan the project. This meant that each time I finished a ticket, the next most important piece of work was waiting for me. This massively reduced my cognitive load and therefore kept me working on the MVP rather than building something else great but unnecessary.
 
-I spent a while considering using a relational checker (i.e. for a token placed in the middle, check what is in the squares above and below, then left and right etc) and again felt this would be overcomplicating.
+### React Router and Github Pages
 
-Having minimised the problem to only a 3x3 game board as per traditional noughts and crosses, I drew out all the possible winning combinations and found that creating an array of arrays would let me then check the player's current positions against each of the winning combinations in turn. All that was needed was to push the player's chosen square into an array of their current positions during each move.
-
-```js
-const winningPositions = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]];
-
-// Function to determine game outcome
-function isItOverYet(player) {
-    // get all of the indexes of current player's icons
-    let playerPositions = player.positions;
-    // Check whether the array contains any of the winning positions list
-    winningPositions.forEach(function(position) {
-        if (position.every((indx) => playerPositions.includes(indx))) {
-        scoreboard.winner = player;
-        // Log the winner
-        document.querySelector('.reset > .outcome').innerText = 
-            `${player.name} wins and
-            ${scoreboard.otherPlayer.name} loses.
-
-            Want to play again?`;
-        scoreboard.currentPlayer.wins++;
-        scoreboard.otherPlayer.losses++;
-        }
-    })
-    // Finally see if we have a draw
-    if (!scoreboard.winner && scoreboard.turnNumber === 8) {
-        scoreboard.draw = 1;
-        scoreboard.currentPlayer.draws++;
-        scoreboard.otherPlayer.draws++;
-        document.querySelector('.reset > .outcome').innerText = 
-            `It's a draw!
-
-            Want to play again?`;
-    }
-}
-```
+I decided to set up my infrastructure first so that I wouldn't be panicking last minute trying to get Github Pages working (great idea, I just didn't follow through quite far enough!) After following a few tutorials and trying different ways to get React Router working with Github Pages, I finally found one that explained the steps in a way that made sense to me. I was therefore able to feed this information back to the team.
 
 ___
 ## Other Learnings/Takeaways
 
-- Flexbox: I went into this project seeing Flexbox as my nemesis. Much like when I learnt to drive, I thought "I'm just not suited to this, I'll never find this easy". And much like driving, I don't find it easy as such, but I can find myself doing a good job whilst on autopilot. Here, I noticed myself centring the Game Outcome message using Flexbox without looking it up, and getting the right result first time.
-- Debugging: I feel much happier with hitting errors and having a logical way to locate, identify and test possible solutions for the problem.
-- Try before you buy: On reflection, I should have checked first whether my homemade font could be multicoloured, as I'm left with slightly muted icons in the final product!
-
-
+I have wanted to build something like this (although more advanced as shown in the Future Improvements section and silver/gold user stories) for a long time, so it's been really satisfying moving towards this goal. I'll definitely be working on this project beyond the scope of the course!
 
 ___
 ## Bugs
 
-- Favicon compatibility: iOS Safari and classic desktop browsers are covered, but Android Chrome and Edge/IE12 require different formats that I haven't yet added (2nd April)
-- Audio seems to only work on localhost and not in Github pages, potentially my audio loop is not working correctly (4th April)
+- API does not fetch from HTTP on Github Pages
+- Marking all as visited does not cause each individual place to be marked as visited, only the button at the top
 
 ___
 ## Future Improvements
 
-- Allow players to customize their tokens (specifically, choosing their flower colours)
-- Use localStorage to persist data locally to allow games to continue after page refresh or loss of internet connectivity
-- Create an unbeatable AI opponent
+- Integrate Google Maps API so the list can be sorted by shortest distance/journey time first

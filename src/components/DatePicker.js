@@ -1,3 +1,4 @@
+import "../css/DatePicker.css";
 import { useRef, useState } from 'react';
 
 export default function DatePicker({dateChoice, handleDateChange}) {

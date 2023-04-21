@@ -59,11 +59,8 @@ function App() {
       }
       else {
         console.log("place is not in shortlist so we'll add it");
-        console.log(place);
         place.fontColour="#000000";
-        console.log(place);
         newShortlist = [...newShortlist, place];
-        console.log(newShortlist);
       } 
     })
     setShortlist(newShortlist)
@@ -84,7 +81,6 @@ function App() {
     places.forEach((place) => {
       console.log("Removing place")
       newShortlist = newShortlist.filter((item) => item.i !== place.i);
-      console.log(newShortlist)
     })
     setShortlist(newShortlist);
   }
@@ -103,9 +99,8 @@ function App() {
     <div className="App">
       <NavBar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Shortlist shortlist={shortlist} removePlaceFromShortlist={removePlaceFromShortlist} selectedIDs={selectedIDs} handleSelectClick={handleSelectClick} clearSelectedIDs={clearSelectedIDs} handleSelectAll={handleSelectAll} allSelected={allSelected} clearSelectAll={clearSelectAll} updateFontColour={updateFontColour} />} />
         <Route path="/search" element={<Search shortlist={shortlist} addPlaceToShortlist={addPlaceToShortlist} selectedIDs={selectedIDs} handleSelectClick={handleSelectClick} clearSelectedIDs={clearSelectedIDs} handleSelectAll={handleSelectAll} allSelected={allSelected} clearSelectAll={clearSelectAll} />} />
-        <Route path="/shortlist" element={<Shortlist shortlist={shortlist} removePlaceFromShortlist={removePlaceFromShortlist} selectedIDs={selectedIDs} handleSelectClick={handleSelectClick} clearSelectedIDs={clearSelectedIDs} handleSelectAll={handleSelectAll} allSelected={allSelected} clearSelectAll={clearSelectAll} updateFontColour={updateFontColour} />} />
         <Route path="/place" element={<Place />}>
           <Route path=":place" element={<Place />} />
         </Route>

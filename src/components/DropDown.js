@@ -1,10 +1,12 @@
+import "../css/DropDown.css"
+
 export default function DropDown({locationOptions, locationChoice, handleSelectChange}) {
     
     return (
-        <label>
-            Please choose your current location:
+        <label className="DropDown">
+            Where are you?
             {/* Dropdown from list of locations from API */}
-            <select 
+            <select className="DropDown"
                 required
                 id="location" 
                 value={locationChoice} 

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../css/Checkbox.css";
 
 export default function Checkbox ({ id, place, handleSelectClick, selectedIDs, handleSelectAll, list, allSelected }) {
   
@@ -15,7 +16,7 @@ export default function Checkbox ({ id, place, handleSelectClick, selectedIDs, h
     }
 
     return (
-        <>
+        <div className="Checkbox">
             { id==="selectAll" ? 
             <input
                 id={id}
@@ -33,6 +34,6 @@ export default function Checkbox ({ id, place, handleSelectClick, selectedIDs, h
                 checked={selectedIDs.some((item) => item.i === place.i)}
             />
             }
-        </>
+        </div>
     )
 }
